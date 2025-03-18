@@ -33,6 +33,9 @@ public class UserInfo {
     public void setPoints(int points) {
         this.points = points;
     }
+    public void addPoints(int points){
+        this.points += points;
+    }
 
     public int getPoints() {
         return points;

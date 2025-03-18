@@ -2,6 +2,8 @@ package com.lab.catclicker;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 public class ClickerActivity extends Activity {
     Button clickerbutton,shopbutton,optionbutton;
     TextView pointCounter;
+    UserInfo userInfo = new UserInfo();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +23,11 @@ public class ClickerActivity extends Activity {
         clickerbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                userInfo.addPoints(1);
+                pointCounter.setText(userInfo.getPoints());
 
             }
         });
+
     }
 }
