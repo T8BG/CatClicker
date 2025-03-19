@@ -24,7 +24,7 @@ public class ClickerActivity extends Activity {
             @Override
             public void onClick(View v) {
                 userInfo.addPoints(1);
-                pointCounter.setText(userInfo.getPoints());
+                pointCounter.setText("Points: "+userInfo.getPoints());
 
             }
         });
