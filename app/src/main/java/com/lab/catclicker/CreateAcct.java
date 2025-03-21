@@ -1,5 +1,7 @@
 package com.lab.catclicker;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,10 +35,19 @@ public class CreateAcct extends AppCompatActivity {
 
         submit = findViewById(R.id.button3);
 
+        SharedPreferences sharedPref = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
+                String name = username.getText().toString();
+                String pass = password.getText().toString();
 
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("username", name);
+                editor.putString("password", pass);
+                editor.apply();
             }
         });
     }
