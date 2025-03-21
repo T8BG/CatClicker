@@ -8,26 +8,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ClickerActivity extends Activity {
-    Button clickerbutton,shopbutton,optionbutton;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
+
+public class ClickerActivity extends AppCompatActivity {
+    Button shopbutton,optionbutton;
     TextView pointCounter;
+    ViewPager2 viewPager2;
     UserInfo userInfo = new UserInfo();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.clicker_main);
-        clickerbutton = findViewById(R.id.ClickerButton);
+        viewPager2 = findViewById(R.id.ClickToShop);
         shopbutton = findViewById(R.id.ButtonShop);
         optionbutton = findViewById(R.id.ButtonOptions);
         pointCounter = findViewById(R.id.PointCount);
-        clickerbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                userInfo.addPoints(1);
-                pointCounter.setText("Points: "+userInfo.getPoints());
 
+        ShopFragmentAdapter shopFragmentAdapter = new ShopFragmentAdapter(getSupportFragmentManager(),getLifecycle());
+        viewPager2.setAdapter(shopFragmentAdapter);
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
             }
         });
-
     }
+
+
 }
