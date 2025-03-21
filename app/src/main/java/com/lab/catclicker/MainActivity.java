@@ -61,6 +61,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+        startService(new Intent(MainActivity.this, BackgroundMusicService.class));
     }
 }
