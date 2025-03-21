@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if((enterName.getText().toString().toUpperCase().equals("ADMIN") && enterPass.getText().toString().toUpperCase().equals("ADMIN")) || (enterName.getText().toString().equals(saveName) && enterPass.getText().toString().equals(savePass)))
+                if((enterName.getText().toString().equalsIgnoreCase("admin") && enterPass.getText().toString().equalsIgnoreCase("admin")) || (enterName.getText().toString().equals(saveName) && enterPass.getText().toString().equals(savePass)))
                 {
                     Intent i = new Intent(getApplicationContext(), ClickerActivity.class);
                     startActivity(i);

@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:context=".CreateAcct"
+    android:background="@drawable/gradients"
     android:layout_gravity="center">
 
 
@@ -47,13 +48,31 @@
             android:inputType="text"
             android:hint="@string/password" />
 
-        <Button
-            android:id="@+id/button3"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/submit"
-            android:layout_gravity="center"/>
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/black"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:text="@string/submit"
+                android:layout_gravity="center"/>
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/black"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="@string/back" />
+        </LinearLayout>
+
 
     </LinearLayout>
 
