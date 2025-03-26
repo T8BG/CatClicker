@@ -25,4 +25,18 @@ public class BackgroundMusicService extends Service {
         return super.onStartCommand(intent, flags, startID);
     }
 
+    @Override
+    public boolean stopService(Intent intent)
+    {
+        return super.stopService(intent);
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        music.stop();
+        music.release();
+    }
+
 }
