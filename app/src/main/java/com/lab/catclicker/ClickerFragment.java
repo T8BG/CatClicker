@@ -12,6 +12,7 @@ public class ClickerFragment extends Fragment {
                              Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.clicker_fragment, container, false);
+
         return view;
     }
 }

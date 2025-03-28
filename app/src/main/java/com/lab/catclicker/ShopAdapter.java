@@ -19,7 +19,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.MyViewHolder> 
         this.upgrades = upgrades;
     }
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView name,des;
+        TextView name,des,price;
         ImageView icon;
         Button button;
         public MyViewHolder(@NonNull View itemView) {
@@ -27,7 +27,8 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.MyViewHolder> 
             name = itemView.findViewById(R.id.itemName);
             des = itemView.findViewById(R.id.itemDes);
             button = itemView.findViewById(R.id.button3);
-
+            icon = itemView.findViewById(R.id.imageView);
+            price = itemView.findViewById(R.id.priceView);
         }
     }
     @NonNull
@@ -41,6 +42,14 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull ShopAdapter.MyViewHolder holder, int position) {
         holder.name.setText(upgrades.get(position).getName());
         holder.des.setText(upgrades.get(position).getDis());
+        holder.price.setText((upgrades.get(position).getPrice()));
+        holder.icon.setImageResource(upgrades.get(position).getImage());
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override

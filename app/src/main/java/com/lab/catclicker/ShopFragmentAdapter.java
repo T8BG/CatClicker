@@ -16,10 +16,10 @@ public class ShopFragmentAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         switch(position){
-            case 1:
+            case 0:
                 ClickerFragment clickerFragment = new ClickerFragment();
                 return clickerFragment;
-            case 0:
+            case 1:
                 ShopFragment shopFragment = new ShopFragment();
                 return shopFragment;
             default:

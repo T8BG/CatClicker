@@ -15,7 +15,7 @@ public class ClickerActivity extends AppCompatActivity {
     Button shopbutton,optionbutton;
     TextView pointCounter;
     ViewPager2 viewPager2;
-    UserInfo userInfo = new UserInfo();
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
