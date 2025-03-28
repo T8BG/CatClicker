@@ -26,6 +26,7 @@
         </activity>
         <activity android:name=".ClickerActivity" />
         <service android:name=".BackgroundMusicService"/>
+        <activity android:name=".OptionsActivity"/>
     </application>
 
 </manifest>
