@@ -2,7 +2,14 @@ package com.lab.catclicker;
 
 public class UserInfo {
     String username, password;
-    int points;
+    static int points;
+
+    static int itemAQuantity = 1; // Point upgrade One
+    static int itemBQuantity; // Point upgrade Two
+    static int itemCQuantity; // Point upgrade Three
+
+    static int clickValue = 1;
+
     public UserInfo(){
         this.username = "user";
         this.password = "user";
@@ -30,14 +37,30 @@ public class UserInfo {
         this.username = username;
     }
 
-    public void setPoints(int points) {
-        this.points = points;
+    public static int setPoints() {
+        points += clickValue;
+        return points;
     }
-    public void addPoints(int points){
-        this.points += points;
+    public static int addPoints(){
+
+        if(itemAQuantity!=0)
+        {
+            clickValue += 1;
+        }
+        if(itemBQuantity!=0)
+        {
+            clickValue += 2;
+        }
+        if(itemCQuantity!=0)
+        {
+            clickValue += 3;
+        }
+
+        return clickValue;
     }
 
-    public int getPoints() {
+    public static int getPoints() {
+
         return points;
     }
 }

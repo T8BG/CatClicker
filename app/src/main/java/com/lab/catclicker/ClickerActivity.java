@@ -14,7 +14,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 public class ClickerActivity extends AppCompatActivity {
     Button shopbutton,optionbutton;
-    TextView pointCounter;
+    public static TextView pointCounter;
     ViewPager2 viewPager2;
 
 
@@ -48,6 +48,7 @@ public class ClickerActivity extends AppCompatActivity {
             }
         });
     }
+
 
 
 }
