@@ -18,7 +18,6 @@ public class ClickerFragment extends Fragment {
         mainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "test", Toast.LENGTH_LONG).show();
                 //UserInfo.points++;
                 UserInfo.setPoints();
                 ClickerActivity.pointCounter.setText("Points: " + UserInfo.getPoints());
