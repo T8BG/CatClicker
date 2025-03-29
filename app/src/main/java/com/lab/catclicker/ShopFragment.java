@@ -36,8 +36,8 @@ public class ShopFragment extends Fragment {
         recyclerView.setAdapter(adapter);
     }
     private void setUpgrades(){
-        upgrades.add((new Upgrades("Multi Cat","add a x1.5 multiplicator",CatPics[0],20)));
-        upgrades.add((new Upgrades("Funny cat","helps with clicking the cat, +5 points per click",CatPics[1],50)));
-        upgrades.add((new Upgrades("Silly Cat","Autoclicks for you, bleh",CatPics[2],100)));
+        upgrades.add((new Upgrades("Multi-Cat","Clicks are worth twice as what they were worth.",CatPics[0],200)));
+        upgrades.add((new Upgrades("Mega Funny-Cat","Clicks are worth an five times as much as they were worth.",CatPics[1],500)));
+        upgrades.add((new Upgrades("Lazy-Cat","Gain a point automatically every second.",CatPics[2],1000)));
     }
 }

@@ -12,10 +12,16 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class ClickerActivity extends AppCompatActivity {
     Button shopbutton,optionbutton;
     public static TextView pointCounter;
+    boolean startLoop = true;
     ViewPager2 viewPager2;
+
+    ExecutorService executor = Executors.newFixedThreadPool(1);
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +53,34 @@ public class ClickerActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                while(startLoop)
+                {
+                    try {
+                        Thread.sleep(1000);
+                        if(UserInfo.autoAQuantity > 0)
+                        {
+                            UserInfo.setPoints();
+                        }
+                        if(UserInfo.autoBQuantity > 0)
+                        {
+                            UserInfo.setPoints();
+                        }
+                        if(UserInfo.autoCQuantity > 0)
+                        {
+                            UserInfo.setPoints();
+                        }
+                        pointCounter.setText("Points: " + UserInfo.getPoints());
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+        };
+        executor.submit(runnable); // It is adding the points -> not dynamically
+        executor.shutdown();
     }
 
 

@@ -25,7 +25,7 @@
             android:id="@+id/ButtonOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Options"
+            android:text="@string/options"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +44,7 @@
             android:id="@+id/ButtonShop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shop"
+            android:text="@string/shop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>

@@ -4,9 +4,13 @@ public class UserInfo {
     String username, password;
     static int points;
 
-    static int itemAQuantity = 0; // Point upgrade One
+    static int itemAQuantity; // Point upgrade One
     static int itemBQuantity; // Point upgrade Two
     static int itemCQuantity; // Point upgrade Three
+
+    static int autoAQuantity = 1;
+    static int autoBQuantity;
+    static int autoCQuantity;
 
     static int clickValue = 1;
 
@@ -44,7 +48,19 @@ public class UserInfo {
     {
         if(itemAQuantity <=3) {
             clickValue = clickValue * 2;
-            itemAQuantity +=1;
+            itemAQuantity++;
+        }
+
+        if(itemBQuantity <= 3)
+        {
+            clickValue = clickValue * 5;
+            itemBQuantity++;
+        }
+
+        if(itemCQuantity <= 3)
+        {
+            clickValue = clickValue * 4;
+            itemCQuantity++;
         }
 
     }
