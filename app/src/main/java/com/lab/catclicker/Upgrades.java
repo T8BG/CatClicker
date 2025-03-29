@@ -2,13 +2,13 @@ package com.lab.catclicker;
 
 public class Upgrades {
 
-    String name, dis, pricename;
+    String name, dis;
     int image, price;
-    public Upgrades(String name, String dis,String pricename, int image,int price){
+    public Upgrades(String name, String dis, int image,int price){
         this.name = name;
         this.dis = dis;
         this.image = image;
-        this.pricename = pricename;
+
         this.price = price;
     }
     public String getName(){
@@ -21,13 +21,18 @@ public class Upgrades {
     public int getImage(){
         return image;
     }
-    public String getPrice(){
-        return pricename;
-    }
+
     public int getPriceValue(){
         return price;
     }
-    public void setPriceValue(double mult){
-        this.price *=mult;
+    public boolean checkers(){
+        if(UserInfo.getPoints() >= this.price){
+            return true;
+        }
+        return false;
     }
+    public int priceIsPricier(){
+        return price *=3; //test
+    }
+
 }

@@ -4,7 +4,7 @@ public class UserInfo {
     String username, password;
     static int points;
 
-    static int itemAQuantity = 1; // Point upgrade One
+    static int itemAQuantity = 0; // Point upgrade One
     static int itemBQuantity; // Point upgrade Two
     static int itemCQuantity; // Point upgrade Three
 
@@ -37,25 +37,21 @@ public class UserInfo {
         this.username = username;
     }
 
-    public static int setPoints() {
+    public static void setPoints() {
         points += clickValue;
-        return points;
     }
-    public static int addPoints(){
-
-        if(itemAQuantity!=0)
-        {
-            clickValue += 1;
-        }
-        if(itemBQuantity!=0)
-        {
-            clickValue += 2;
-        }
-        if(itemCQuantity!=0)
-        {
-            clickValue += 3;
+    public static void addMult()
+    {
+        if(itemAQuantity <=3) {
+            clickValue = clickValue * 2;
+            itemAQuantity +=1;
         }
 
+    }
+    public static void payTheBills(int point){
+        points -= point;
+    }
+    public static int getMult(){
         return clickValue;
     }
 
