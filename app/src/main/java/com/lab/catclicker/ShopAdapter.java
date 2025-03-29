@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,6 +30,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.MyViewHolder> 
             button = itemView.findViewById(R.id.button3);
             icon = itemView.findViewById(R.id.imageView);
             price = itemView.findViewById(R.id.priceView);
+
         }
     }
     @NonNull
@@ -40,14 +42,22 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ShopAdapter.MyViewHolder holder, int position) {
+        Upgrades upgrade = upgrades.get(position);
         holder.name.setText(upgrades.get(position).getName());
         holder.des.setText(upgrades.get(position).getDis());
-        holder.price.setText((upgrades.get(position).getPrice()));
+        holder.price.setText("Price: "+ upgrades.get(position).getPriceValue());
         holder.icon.setImageResource(upgrades.get(position).getImage());
-        holder.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+        // experimenting with lambda expressions. taken from: https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html
+        holder.button.setOnClickListener(v -> {
+            // AMI it works for every upgrade, will do later the devider for different upgrades
+            // do the cat health methods so i can play around it
+            if (upgrade.checkers()) {
+                UserInfo.addMult();
+                UserInfo.payTheBills(upgrade.getPriceValue());
+                upgrade.priceIsPricier();//test
+                notifyItemChanged(position); // Refresh UI after upgrade
+            } else {
+                Toast.makeText(v.getContext(), "You don't have enough points!", Toast.LENGTH_SHORT).show();
             }
         });
     }
