@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class ShopFragment extends Fragment {
     private ArrayList<Upgrades> upgrades;
-    int[] CatPics = {R.drawable.mio, R.drawable.funny_cat, R.drawable.milly};
+    int[] CatPics = {R.drawable.mio, R.drawable.funny_cat, R.drawable.milly, R.drawable.xiaojie};
     RecyclerView recyclerView;
 
     @Override
@@ -39,5 +39,6 @@ public class ShopFragment extends Fragment {
         upgrades.add((new Upgrades("Multi-Cat","Clicks are doubled!",CatPics[0],200)));
         upgrades.add((new Upgrades("Funny-Cat","Clicks are worth 5 times more!!",CatPics[1],500)));
         upgrades.add((new Upgrades("Lazy-Cat","Gain a point automatically every second.",CatPics[2],1000)));
+        upgrades.add((new Upgrades("Hungry-Cat", "Gain +5 hunger points.", CatPics[3], 200)));
     }
 }

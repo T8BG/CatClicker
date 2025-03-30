@@ -66,6 +66,7 @@ public class UserInfo {
             itemCQuantity++;
         }
 
+
     }
     public static void payTheBills(int point){
         points -= point;
