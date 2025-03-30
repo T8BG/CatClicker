@@ -61,17 +61,27 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.MyViewHolder> 
                     case "Funny-Cat":
                         UserInfo.addBigMult();
                         UserInfo.payTheBills(upgrade.getPriceValue());
-                        upgrade.priceIsPricier(3);
+                        upgrade.priceIsPricier(4);
                         break;
                     case "Lazy-Cat":
                         UserInfo.autoBuy();
                         UserInfo.payTheBills(upgrade.getPriceValue());
-                        upgrade.priceIsPricier(3);
+                        upgrade.priceIsPricier(100);
                         break;
                     case "Hungry-Cat":
                         UserInfo.Healthy();
                         UserInfo.payTheBills(upgrade.getPriceValue());
                         upgrade.priceIsPricier(2);
+                        break;
+                    case "Gentle-Cat":
+                        UserInfo.addNiceMult();
+                        UserInfo.payTheBills(upgrade.getPriceValue());
+                        upgrade.priceIsPricier(3);
+                        break;
+                    case "The Thinker":
+                        UserInfo.theThinker();
+                        UserInfo.payTheBills(upgrade.getPriceValue());
+                        upgrade.priceIsPricier(5);
                         break;
                     default:
                         Toast.makeText(v.getContext(), "Unknown choice, try again", Toast.LENGTH_SHORT).show();

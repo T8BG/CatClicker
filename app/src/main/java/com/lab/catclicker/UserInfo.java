@@ -4,6 +4,7 @@ public class UserInfo {
     String username, password;
     static int points;
     static int health = 100;
+    static int thoughts = 0;
 
     static int itemAQuantity; // Point upgrade One
     static int itemBQuantity; // Point upgrade Two
@@ -19,6 +20,7 @@ public class UserInfo {
         this.points = 0;
         this.health = 100;
         this.auto = false;
+        this.thoughts = 0;
     }
     public UserInfo(String username,String password){
         this.username = username;
@@ -26,6 +28,7 @@ public class UserInfo {
         this.points = 0;
         this.health = 0;
         this.auto = false;
+        this.thoughts = 0;
     }
 
     public void setPassword(String password) {
@@ -97,5 +100,11 @@ public class UserInfo {
     }
     public static boolean isAutoActive(){
         return  auto;
+    }
+    public static void theThinker(){
+        thoughts += 1;
+    }
+    public static int getThoughts(){
+        return thoughts;
     }
 }
