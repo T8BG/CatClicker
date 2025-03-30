@@ -11,4 +11,9 @@
     <string name="shop">Shop</string>
     <string name="pointDefault">Points: 0</string>
     <string name="healthDefault">Health: 100</string>
+    <string name="statistics">Statistics:</string>
+    <string name="audioSettings">Audio Settings:</string>
+    <string name="accountSettings">Account Settings:</string>
+    <string name="resetPassword">Reset Password</string>
+    <string name="save">Save Game</string>
 </resources>

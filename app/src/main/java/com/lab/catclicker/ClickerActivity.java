@@ -1,6 +1,8 @@
 package com.lab.catclicker;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +33,8 @@ public class ClickerActivity extends AppCompatActivity {
         pointCounter = findViewById(R.id.PointCount);
         healthCounter = findViewById(R.id.HealthCount);
 
+        SharedPreferences reader;
+
         ShopFragmentAdapter shopFragmentAdapter = new ShopFragmentAdapter(getSupportFragmentManager(),getLifecycle());
         viewPager2.setAdapter(shopFragmentAdapter);
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
@@ -39,6 +43,13 @@ public class ClickerActivity extends AppCompatActivity {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels);
             }
         });
+
+        reader = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
+        String pointsValue = reader.getString("points", "");
+        UserInfo.points = Integer.parseInt(pointsValue);
+        String healthValue = reader.getString("health", "");
+        UserInfo.health = Integer.parseInt(healthValue);
+
         shopbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
