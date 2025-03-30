@@ -29,16 +29,35 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/PointCount"
-            android:layout_width="228dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Points: 0"
-            app:layout_constraintBottom_toTopOf="@+id/ClickerButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/PointCount"
+                android:layout_width="228dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/pointDefault"
+                app:layout_constraintBottom_toTopOf="@+id/ClickerButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/HealthCount"
+                android:layout_width="228dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/healthDefault"
+                app:layout_constraintBottom_toTopOf="@+id/ClickerButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/ButtonShop"

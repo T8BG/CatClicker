@@ -18,10 +18,11 @@ import java.util.concurrent.Executors;
 public class ClickerActivity extends AppCompatActivity {
     Button shopbutton,optionbutton;
     public static TextView pointCounter;
+    public static TextView healthCounter;
     boolean startLoop = true;
     ViewPager2 viewPager2;
 
-    ExecutorService executor = Executors.newFixedThreadPool(1);
+    ExecutorService executor = Executors.newFixedThreadPool(2);
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class ClickerActivity extends AppCompatActivity {
         shopbutton = findViewById(R.id.ButtonShop);
         optionbutton = findViewById(R.id.ButtonOptions);
         pointCounter = findViewById(R.id.PointCount);
+        healthCounter = findViewById(R.id.HealthCount);
 
         ShopFragmentAdapter shopFragmentAdapter = new ShopFragmentAdapter(getSupportFragmentManager(),getLifecycle());
         viewPager2.setAdapter(shopFragmentAdapter);
@@ -79,10 +81,25 @@ public class ClickerActivity extends AppCompatActivity {
                 }
             }
         };
-        executor.submit(runnable); // It is adding the points -> not dynamically
+        executor.submit(runnable);
+        //Health point go down
+        Runnable runnable2 = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    while(startLoop)
+                    {
+                        Thread.sleep(5000);
+                        UserInfo.lowerHealth();
+                        healthCounter.setText("Health: " + UserInfo.getHealth());
+                    }
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+        };
+        executor.submit(runnable2);
         executor.shutdown();
     }
-
-
-
 }

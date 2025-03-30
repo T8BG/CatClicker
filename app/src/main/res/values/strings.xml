@@ -9,4 +9,6 @@
     <string name="credits">Credits</string>
     <string name="options">Options</string>
     <string name="shop">Shop</string>
+    <string name="pointDefault">Points: 0</string>
+    <string name="healthDefault">Health: 100</string>
 </resources>

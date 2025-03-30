@@ -3,6 +3,7 @@ package com.lab.catclicker;
 public class UserInfo {
     String username, password;
     static int points;
+    static int health = 100;
 
     static int itemAQuantity; // Point upgrade One
     static int itemBQuantity; // Point upgrade Two
@@ -18,11 +19,13 @@ public class UserInfo {
         this.username = "user";
         this.password = "user";
         this.points = 0;
+        this.health = 100;
     }
     public UserInfo(String username,String password){
         this.username = username;
         this.password = password;
         this.points = 0;
+        this.health = 0;
     }
 
     public void setPassword(String password) {
@@ -69,6 +72,16 @@ public class UserInfo {
     }
     public static int getMult(){
         return clickValue;
+    }
+
+    public static void lowerHealth()
+    {
+        health--;
+    }
+
+    public static int getHealth()
+    {
+        return health;
     }
 
     public static int getPoints() {
