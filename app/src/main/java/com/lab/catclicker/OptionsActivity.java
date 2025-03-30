@@ -38,5 +38,11 @@ public class OptionsActivity extends Activity {
                 startActivity(i);
             }
         });
+        returnGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OptionsActivity.this.finish();
+            }
+        });
     }
 }
