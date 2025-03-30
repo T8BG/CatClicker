@@ -6,11 +6,11 @@ public class UserInfo {
     static int health = 100;
     static int thoughts = 0;
 
-    static int itemAQuantity; // Point upgrade One
-    static int itemBQuantity; // Point upgrade Two
-    static int itemCQuantity; // Point upgrade Three
+    static int itemAQuantity = 0; // Point upgrade One
+    static int itemBQuantity = 0; // Point upgrade Two
+    static int itemCQuantity = 0; // Point upgrade Three
 
-    static boolean auto;
+    static boolean auto = false;
 
     static int clickValue = 1;
 
