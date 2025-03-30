@@ -45,23 +45,28 @@ public class ClickerActivity extends AppCompatActivity {
         });
 
         reader = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
-        String pointsValue = reader.getString("points", "");
-        UserInfo.points = Integer.parseInt(pointsValue);
-        String healthValue = reader.getString("health", "");
-        UserInfo.health = Integer.parseInt(healthValue);
-        String itemAValue = reader.getString("itemA", "");
-        UserInfo.itemAQuantity = Integer.parseInt(itemAValue);
-        String itemBValue = reader.getString("itemB", "");
-        UserInfo.itemBQuantity = Integer.parseInt(itemBValue);
-        String itemCValue = reader.getString("itemC", "");
-        UserInfo.itemCQuantity = Integer.parseInt(itemCValue);
-        String autoValue = reader.getString("hasAuto", "");
-        if(autoValue.contains("true"))
+
+        if(reader.getAll().size() > 2) // Check if you have more than just a username.
         {
-            UserInfo.autoBuy();
+            String pointsValue = reader.getString("points", "");
+            UserInfo.points = Integer.parseInt(pointsValue);
+            String healthValue = reader.getString("health", "");
+            UserInfo.health = Integer.parseInt(healthValue);
+            String itemAValue = reader.getString("itemA", "");
+            UserInfo.itemAQuantity = Integer.parseInt(itemAValue);
+            String itemBValue = reader.getString("itemB", "");
+            UserInfo.itemBQuantity = Integer.parseInt(itemBValue);
+            String itemCValue = reader.getString("itemC", "");
+            UserInfo.itemCQuantity = Integer.parseInt(itemCValue);
+            String autoValue = reader.getString("hasAuto", "");
+            if(autoValue.contains("true"))
+            {
+                UserInfo.autoBuy();
+            }
+            String thinkerValue = reader.getString("thinker", "");
+            UserInfo.thoughts = Integer.parseInt(thinkerValue);
         }
-        String thinkerValue = reader.getString("thinker", "");
-        UserInfo.thoughts = Integer.parseInt(thinkerValue);
+
         shopbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
