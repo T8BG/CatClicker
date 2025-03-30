@@ -9,9 +9,7 @@ public class UserInfo {
     static int itemBQuantity; // Point upgrade Two
     static int itemCQuantity; // Point upgrade Three
 
-    static int autoAQuantity = 1;
-    static int autoBQuantity;
-    static int autoCQuantity;
+    static boolean auto;
 
     static int clickValue = 1;
 
@@ -20,12 +18,14 @@ public class UserInfo {
         this.password = "user";
         this.points = 0;
         this.health = 100;
+        this.auto = false;
     }
     public UserInfo(String username,String password){
         this.username = username;
         this.password = password;
         this.points = 0;
         this.health = 0;
+        this.auto = false;
     }
 
     public void setPassword(String password) {
@@ -53,20 +53,20 @@ public class UserInfo {
             clickValue = clickValue * 2;
             itemAQuantity++;
         }
-
+    }
+    public static void addBigMult(){
         if(itemBQuantity <= 3)
         {
             clickValue = clickValue * 5;
             itemBQuantity++;
         }
-
+    }
+    public static void addNiceMult(){
         if(itemCQuantity <= 3)
         {
             clickValue = clickValue * 4;
             itemCQuantity++;
         }
-
-
     }
     public static void payTheBills(int point){
         points -= point;
@@ -80,6 +80,9 @@ public class UserInfo {
         health--;
     }
 
+    public static void Healthy(){
+        health += 5;
+    }
     public static int getHealth()
     {
         return health;
@@ -88,5 +91,11 @@ public class UserInfo {
     public static int getPoints() {
 
         return points;
+    }
+    public static void autoBuy(){
+        auto = true;
+    }
+    public static boolean isAutoActive(){
+        return  auto;
     }
 }

@@ -31,8 +31,8 @@ public class Upgrades {
         }
         return false;
     }
-    public int priceIsPricier(){
-        return price *=3; //test
+    public int priceIsPricier(double mult){
+        return price *=mult; //test
     }
 
 }

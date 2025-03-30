@@ -1,10 +1,7 @@
 package com.lab.catclicker;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -62,15 +59,7 @@ public class ClickerActivity extends AppCompatActivity {
                 {
                     try {
                         Thread.sleep(1000);
-                        if(UserInfo.autoAQuantity > 0)
-                        {
-                            UserInfo.setPoints();
-                        }
-                        if(UserInfo.autoBQuantity > 0)
-                        {
-                            UserInfo.setPoints();
-                        }
-                        if(UserInfo.autoCQuantity > 0)
+                        if(UserInfo.isAutoActive())
                         {
                             UserInfo.setPoints();
                         }

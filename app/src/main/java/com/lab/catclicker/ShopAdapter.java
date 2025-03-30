@@ -52,10 +52,34 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.MyViewHolder> 
             // AMI it works for every upgrade, will do later the devider for different upgrades
             // do the cat health methods so i can play around it
             if (upgrade.checkers()) {
-                UserInfo.addMult();
-                UserInfo.payTheBills(upgrade.getPriceValue());
-                upgrade.priceIsPricier();//test
-                notifyItemChanged(position); // Refresh UI after upgrade
+                switch (upgrade.getName()) {
+                    case "Multi-Cat":
+                        UserInfo.addMult();
+                        UserInfo.payTheBills(upgrade.getPriceValue());
+                        upgrade.priceIsPricier(2);
+                        break;
+                    case "Funny-Cat":
+                        UserInfo.addBigMult();
+                        UserInfo.payTheBills(upgrade.getPriceValue());
+                        upgrade.priceIsPricier(3);
+                        break;
+                    case "Lazy-Cat":
+                        UserInfo.autoBuy();
+                        UserInfo.payTheBills(upgrade.getPriceValue());
+                        upgrade.priceIsPricier(3);
+                        break;
+                    case "Hungry-Cat":
+                        UserInfo.Healthy();
+                        UserInfo.payTheBills(upgrade.getPriceValue());
+                        upgrade.priceIsPricier(2);
+                        break;
+                    default:
+                        Toast.makeText(v.getContext(), "Unknown choice, try again", Toast.LENGTH_SHORT).show();
+                        return;
+                }
+
+                    notifyItemChanged(position); // Refresh UI after upgrade
+
             } else {
                 Toast.makeText(v.getContext(), "You don't have enough points!", Toast.LENGTH_SHORT).show();
             }
