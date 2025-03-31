@@ -3,6 +3,7 @@ package com.lab.catclicker;
 public class UserInfo {
     String username, password;
     static int points;
+    static int totalPoints;
     static int health = 100;
     static int thoughts = 0;
 
@@ -49,6 +50,7 @@ public class UserInfo {
 
     public static void setPoints() {
         points += clickValue;
+        //totalPoints += points;
     }
     public static void addMult()
     {
@@ -92,8 +94,11 @@ public class UserInfo {
     }
 
     public static int getPoints() {
-
         return points;
+    }
+    public static int getTotalPoints()
+    {
+        return totalPoints;
     }
     public static void autoBuy(){
         auto = true;

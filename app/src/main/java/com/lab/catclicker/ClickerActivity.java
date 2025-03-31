@@ -121,15 +121,23 @@ public class ClickerActivity extends AppCompatActivity {
 
     }
     @Override
-    protected void onPause()
+    protected void onPause() // so it doesn't break when you go to options
     {
         stopService(new Intent(getApplicationContext(), BackgroundMusicService.class));
         super.onPause();
+
+        SharedPreferences.Editor save = getSharedPreferences("UserDetails", MODE_PRIVATE).edit();
+        save.putString("points", String.valueOf(UserInfo.points));
+        save.putString("health", String.valueOf(UserInfo.health));
+        save.apply();
     }
 
     @Override
     protected void onResume()
     {
+        SharedPreferences reader = getSharedPreferences("UserDetails", MODE_PRIVATE);
+        UserInfo.points = Integer.parseInt(reader.getString("points", "0"));
+        UserInfo.health = Integer.parseInt(reader.getString("health", "100"));
         if(OptionsActivity.isPlaying)
         {
             startService(new Intent(getApplicationContext(), BackgroundMusicService.class));

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class OptionsActivity extends Activity {
-    TextView pointsGot, buttonClicked, uppies, statsTitle, audioTitle, accountTitle;
+    TextView pointsGot, statsTitle, manyThoughts, audioTitle, accountTitle;
     Button returnGame;
     Button credits;
     Button saveGame;
@@ -30,7 +30,7 @@ public class OptionsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.options_activity);
         pointsGot = findViewById(R.id.pointsGained);
-        buttonClicked = findViewById(R.id.buttonClicked);
+        manyThoughts = findViewById(R.id.buttonClicked);
         chechRepublic = findViewById(R.id.checkBox);
         statsTitle = findViewById(R.id.textView3);
 
@@ -53,6 +53,9 @@ public class OptionsActivity extends Activity {
         {
             chechRepublic.setChecked(false);
         }
+
+        pointsGot.setText("Total Points: " + UserInfo.getTotalPoints());
+        manyThoughts.setText("Total Thoughts: " + UserInfo.getThoughts());
         chechRepublic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
