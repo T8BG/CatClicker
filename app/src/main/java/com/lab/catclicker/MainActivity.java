@@ -40,13 +40,12 @@ public class MainActivity extends AppCompatActivity {
         login = findViewById(R.id.button);
         createAcct = findViewById(R.id.button2);
 
-        reader = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
-        String saveName = reader.getString("username", "");
-        String savePass = reader.getString("password", "");
-
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                reader = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
+                String saveName = reader.getString("username", "");
+                String savePass = reader.getString("password", "");
                 if((enterName.getText().toString().equalsIgnoreCase("admin") && enterPass.getText().toString().equalsIgnoreCase("admin")) || (enterName.getText().toString().equals(saveName) && enterPass.getText().toString().equals(savePass)))
                 {
                     Intent i = new Intent(getApplicationContext(), ClickerActivity.class);
