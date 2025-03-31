@@ -51,6 +51,31 @@ public class CreateAcct extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("username", name);
                 editor.putString("password", pass);
+
+                String pointsString = "" + UserInfo.getPoints();
+                String healthString = "" + UserInfo.getHealth();
+                String itemAString = "" + UserInfo.itemAQuantity;
+                String itemBString = "" + UserInfo.itemBQuantity;
+                String itemCString = "" + UserInfo.itemCQuantity;
+                String hasAuto;
+                if(UserInfo.isAutoActive())
+                {
+                    hasAuto = "true";
+                }
+                else
+                {
+                    hasAuto = "false";
+                }
+                String thinkerCount = "" + UserInfo.getThoughts();
+                editor.putString("points", pointsString);
+                editor.putString("health", healthString);
+                editor.putString("itemA", itemAString);
+                editor.putString("itemB", itemBString);
+                editor.putString("itemC", itemCString);
+                editor.putString("hasAuto", hasAuto);
+                editor.putString("thinker", thinkerCount);
+
+                editor.apply();
                 editor.apply();
                 Toast.makeText(getApplicationContext(), "Account details saved!", Toast.LENGTH_LONG).show();
             }
