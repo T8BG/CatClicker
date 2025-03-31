@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -21,7 +22,7 @@ public class ClickerActivity extends AppCompatActivity {
     boolean startLoop = true;
     ViewPager2 viewPager2;
 
-    ExecutorService executor = Executors.newFixedThreadPool(2);
+    ExecutorService executor = Executors.newFixedThreadPool(3);
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class ClickerActivity extends AppCompatActivity {
         optionbutton = findViewById(R.id.ButtonOptions);
         pointCounter = findViewById(R.id.PointCount);
         healthCounter = findViewById(R.id.HealthCount);
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         SharedPreferences reader;
 
         ShopFragmentAdapter shopFragmentAdapter = new ShopFragmentAdapter(getSupportFragmentManager(),getLifecycle());
@@ -117,6 +118,47 @@ public class ClickerActivity extends AppCompatActivity {
             }
         };
         executor.submit(runnable2);
+
+        Runnable runnable3 = new Runnable() {
+            @Override
+            public void run() {
+                while (startLoop) {
+                    try {
+                        Thread.sleep(100);
+                        if (UserInfo.getHealth() <= 0) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(ClickerActivity.this);
+                                    builder.setTitle("GAME OVER");
+                                    builder.setMessage("Health reached zero!");
+                                    builder.setPositiveButton("OK", new android.content.DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(android.content.DialogInterface dialog, int which) {
+                                            UserInfo.points = 0;
+                                            UserInfo.health = 100;
+                                            UserInfo.totalPoints = 0;
+                                            UserInfo.itemAQuantity = 0;
+                                            UserInfo.itemBQuantity = 0;
+                                            UserInfo.itemCQuantity = 0;
+                                            UserInfo.thoughts = 0;
+                                            UserInfo.auto = false;
+                                        }
+                                    });
+                                    builder.show();
+                                }
+                            });
+                            break;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+                }
+            }
+        };
+        executor.submit(runnable3);
         executor.shutdown();
 
     }
