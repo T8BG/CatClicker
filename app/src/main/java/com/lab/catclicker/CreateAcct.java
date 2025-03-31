@@ -1,10 +1,8 @@
 package com.lab.catclicker;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -41,52 +39,42 @@ public class CreateAcct extends AppCompatActivity {
 
         SharedPreferences sharedPref = getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
+        submit.setOnClickListener(v -> {
+            String name = username.getText().toString();
+            String pass = password.getText().toString();
+
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("username", name);
+            editor.putString("password", pass);
+
+            String pointsString = "" + UserInfo.getPoints();
+            String healthString = "" + UserInfo.getHealth();
+            String itemAString = "" + UserInfo.itemAQuantity;
+            String itemBString = "" + UserInfo.itemBQuantity;
+            String itemCString = "" + UserInfo.itemCQuantity;
+            String hasAuto;
+            if(UserInfo.isAutoActive())
             {
-                String name = username.getText().toString();
-                String pass = password.getText().toString();
-
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("username", name);
-                editor.putString("password", pass);
-
-                String pointsString = "" + UserInfo.getPoints();
-                String healthString = "" + UserInfo.getHealth();
-                String itemAString = "" + UserInfo.itemAQuantity;
-                String itemBString = "" + UserInfo.itemBQuantity;
-                String itemCString = "" + UserInfo.itemCQuantity;
-                String hasAuto;
-                if(UserInfo.isAutoActive())
-                {
-                    hasAuto = "true";
-                }
-                else
-                {
-                    hasAuto = "false";
-                }
-                String thinkerCount = "" + UserInfo.getThoughts();
-                editor.putString("points", pointsString);
-                editor.putString("health", healthString);
-                editor.putString("itemA", itemAString);
-                editor.putString("itemB", itemBString);
-                editor.putString("itemC", itemCString);
-                editor.putString("hasAuto", hasAuto);
-                editor.putString("thinker", thinkerCount);
-
-                editor.apply();
-                editor.apply();
-                Toast.makeText(getApplicationContext(), "Account details saved!", Toast.LENGTH_LONG).show();
+                hasAuto = "true";
             }
+            else
+            {
+                hasAuto = "false";
+            }
+            String thinkerCount = "" + UserInfo.getThoughts();
+            editor.putString("points", pointsString);
+            editor.putString("health", healthString);
+            editor.putString("itemA", itemAString);
+            editor.putString("itemB", itemBString);
+            editor.putString("itemC", itemCString);
+            editor.putString("hasAuto", hasAuto);
+            editor.putString("thinker", thinkerCount);
+
+            editor.apply();
+            editor.apply();
+            Toast.makeText(getApplicationContext(), "Account details saved!", Toast.LENGTH_LONG).show();
         });
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-            }
-        });
+        back.setOnClickListener(v -> CreateAcct.this.finish());
     }
 }

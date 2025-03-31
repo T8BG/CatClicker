@@ -6,6 +6,7 @@ public class UserInfo {
     static int totalPoints;
     static int health = 100;
     static int thoughts = 0;
+    static int howHungry = 0;
 
     static int itemAQuantity = 0; // Point upgrade One
     static int itemBQuantity = 0; // Point upgrade Two
@@ -59,6 +60,10 @@ public class UserInfo {
             itemAQuantity++;
         }
     }
+    public static int getItemAQuantity(int price){return price*(int)Math.pow(2,itemAQuantity);}
+    public static int getItemBQuantity(int price){return price*(int)Math.pow(3,itemBQuantity);}
+    public static int getItemCQuantity(int price){return price*(int)Math.pow(3,itemCQuantity);}
+    public static int getThoughtsPrice(){return (int) Math.pow(5, thoughts);}
     public static void addBigMult(){
         if(itemBQuantity <= 3)
         {
@@ -87,7 +92,9 @@ public class UserInfo {
 
     public static void Healthy(){
         health += 5;
+        howHungry +=1;
     }
+    public static int getHowHungry(int price){return price*(int)Math.pow(2,howHungry);}
     public static int getHealth()
     {
         return health;
@@ -100,8 +107,12 @@ public class UserInfo {
     {
         return totalPoints;
     }
-    public static void autoBuy(){
-        auto = true;
+    public static void autoBuy(){auto = true;}
+    public static int getAutoBuy(int price){
+        if(isAutoActive()){
+            price *=100;
+        }
+        return price;
     }
     public static boolean isAutoActive(){
         return  auto;

@@ -77,6 +77,7 @@ public class ClickerActivity extends AppCompatActivity {
         optionbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent i = new Intent(getApplicationContext(), OptionsActivity.class);
                 startActivity(i);
             }

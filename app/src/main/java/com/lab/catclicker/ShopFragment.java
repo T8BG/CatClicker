@@ -36,11 +36,11 @@ public class ShopFragment extends Fragment {
         recyclerView.setAdapter(adapter);
     }
     private void setUpgrades(){
-        upgrades.add(new Upgrades("Multi-Cat","Clicks are doubled!",CatPics[0],100));
-        upgrades.add(new Upgrades("Gentle-Cat", "Get 4x to your clicks :0!!!", CatPics[4],350));
-        upgrades.add(new Upgrades("Funny-Cat","Clicks are worth 5 times more!!",CatPics[1],1000));
-        upgrades.add(new Upgrades("Lazy-Cat","Gain a point automatically every second.",CatPics[2],700));
-        upgrades.add(new Upgrades("Hungry-Cat", "Gain +5 hunger points.", CatPics[3], 100));
-        upgrades.add(new Upgrades("The Thinker", "Does nothing, helps him think", CatPics[5], 1));
+        upgrades.add(new Upgrades("Multi-Cat","Clicks are doubled!",CatPics[0],UserInfo.getItemAQuantity(100)));
+        upgrades.add(new Upgrades("Gentle-Cat", "Get 4x to your clicks :0!!!", CatPics[4],UserInfo.getItemBQuantity(350)));
+        upgrades.add(new Upgrades("Funny-Cat","Clicks are worth 5 times more!!",CatPics[1],UserInfo.getItemCQuantity(1000)));
+        upgrades.add(new Upgrades("Lazy-Cat","Gain a point automatically every second.",CatPics[2],UserInfo.getAutoBuy(700)));
+        upgrades.add(new Upgrades("Hungry-Cat", "Gain +5 hunger points.", CatPics[3], UserInfo.getHowHungry(100)));
+        upgrades.add(new Upgrades("The Thinker", "Does nothing, helps him think", CatPics[5], UserInfo.getThoughtsPrice()));
     }
 }
