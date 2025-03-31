@@ -118,5 +118,28 @@ public class ClickerActivity extends AppCompatActivity {
         };
         executor.submit(runnable2);
         executor.shutdown();
+
+    }
+    @Override
+    protected void onPause()
+    {
+        stopService(new Intent(getApplicationContext(), BackgroundMusicService.class));
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume()
+    {
+        if(OptionsActivity.isPlaying)
+        {
+            startService(new Intent(getApplicationContext(), BackgroundMusicService.class));
+            super.onResume();
+        }
+        else
+        {
+            stopService(new Intent(getApplicationContext(), BackgroundMusicService.class));
+            super.onPause();
+        }
+
     }
 }

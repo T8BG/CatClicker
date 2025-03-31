@@ -62,17 +62,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    @Override
-    protected void onPause()
-    {
-        stopService(new Intent(MainActivity.this, BackgroundMusicService.class));
-        super.onPause();
-    }
 
-    @Override
-    protected void onResume()
-    {
-        startService(new Intent(MainActivity.this, BackgroundMusicService.class));
-        super.onResume();
-    }
 }
